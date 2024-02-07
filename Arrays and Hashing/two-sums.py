@@ -30,18 +30,29 @@ def twoSum(nums: List[int], target: int) -> List[int]:
     # return list(indexes)
 
     # Solution 3
+    # n = len(nums)
+    # indexes = set()
+    # for i in range(0, n):
+    #     v = target - nums[i]
+
+    #     if v in nums:
+    #         index = nums.index(v)
+    #         if nums.index(v) != i:
+    #             indexes.add(i)
+    #             indexes.add(index)
+
+    # return list(indexes)
+
+    # hashmap solution
+    hashmap = {}
     n = len(nums)
-    indexes = set()
     for i in range(0, n):
         v = target - nums[i]
-
-        if v in nums:
-            index = nums.index(v)
-            if nums.index(v) != i:
-                indexes.add(i)
-                indexes.add(index)
-
-    return list(indexes)
+        if v in hashmap:
+            temp = [hashmap[v], i]
+            return temp
+        hashmap[nums[i]] = i
+    return
 
 
 print("Test 1: [2, 7, 11, 15], 9:", twoSum([2, 7, 11, 15], 9))
